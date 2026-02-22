@@ -18,3 +18,8 @@ jobs:
 
     - name: Build Success Message
       run: echo "Build Successful!"
+    - name: Send Slack Notification
+      run: |
+        curl -X POST -H 'Content-type: application/json' \
+        --data '{"text":"CI Pipeline Successful for devops-webapp!"}' \
+        ${{ secrets.SLACK_WEBHOOK }}
